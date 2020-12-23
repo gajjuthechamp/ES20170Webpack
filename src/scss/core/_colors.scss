@@ -1,0 +1,36 @@
+$colorPalette: (
+	// Brand colours
+	warmRed: #ee0000,
+	carbonBlack: #15151e,
+	offWhite: #f7f4f1,
+	white: #ffffff,
+
+	// Gray variations
+	gray1: #f3f3f3,
+	gray2: #ededed,
+	gray3: #d0d0d2,
+	gray4: #949498,
+	gray5: #67676d,
+	gray6: #38383f,
+
+	// Overlays
+	blackOverlay: #656565
+);
+
+@function getColor($color) {
+    @return map-get($colorPalette, $color);
+}
+
+@each $colorName, $color in $colorPalette {
+	.bg--#{$colorName} {
+		background-color: $color;
+	}
+
+	.border--#{$colorName} {
+		border-color: $color !important;
+	}
+
+	.color--#{$colorName} {
+		color: $color;
+	}
+}

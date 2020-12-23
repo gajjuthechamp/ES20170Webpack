@@ -1,0 +1,76 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	
+}
+
+fieldset,
+figure {
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: 24px;
+}
+
+p, ul, ol, dl {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+ul, ol, li {
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	padding-left: 1em;
+	ul,
+	ol {
+		margin-bottom: 0;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+
+	&:focus, &:hover {
+		text-decoration: none;
+	}
+}
+
+hr {
+	display: block;
+	border: none;
+}
+
+/* Some HTML5 Elements Support */
+main {
+	display: block;
+}
+
+legend {
+	padding: 0
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #67676d;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #67676d;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #67676d;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #67676d;
+}

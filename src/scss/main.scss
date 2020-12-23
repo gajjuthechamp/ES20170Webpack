@@ -1,0 +1,14 @@
+@import "core/variables";
+@import "core/base";
+
+/*Import Bootstrap*/
+
+
+// Core - do not edit those files!
+@import "core/colors";
+@import "core/mixins";
+@import "core/common-classes";
+
+
+@import "core/_bootstrap-settings";
+@import "~bootstrap/scss/bootstrap";
