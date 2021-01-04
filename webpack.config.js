@@ -11,10 +11,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpackConfig = {
 	entry: {
 		main: path.resolve(__dirname, './src/js/global.js'),
-		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js*')),
-        style: [
-            './src/scss/main.scss'
-        ]
+		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js')),
+        main: ['./src/scss/main.scss']  
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -93,7 +91,7 @@ fs.readdirSync(path.join(__dirname, 'src', 'views', 'templates')).forEach(page =
       title: `Dummy Title`,
       template: `./src/views/templates/${page}/${page}.hbs`,
       filename: `./${page != "home" ? page + "/" : ""}index.html`,
-      chunks: ['main', page],
+      chunks: ['vendors', 'main', page],
       minify: HTMLConfig.htmlMinifyOptions
     });
 
