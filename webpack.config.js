@@ -11,7 +11,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 const webpackConfig = {
 	entry: {
 		main: path.resolve(__dirname, './src/js/global.js'),
-		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js*'))
+		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js*')),
+        style: [
+            './src/scss/main.scss'
+        ]
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
