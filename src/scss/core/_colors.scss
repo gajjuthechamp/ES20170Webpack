@@ -1,20 +1,47 @@
 $colorPalette: (
 	// Brand colours
-	warmRed: #ee0000,
-	carbonBlack: #15151e,
-	offWhite: #f7f4f1,
+	dark-blue: #002750,
+	dark-blue-tint-1-p: #003168,
+	rbc-blue: #0051a5,
+	blue-tint-1: #006ac3,
+	blue-tint-2: #73b0e3,
+	blue-tint-3: #c3e2fa,
+	blue-tint-4: #e3f4ff,
+	blue-tint-5: #f5fcff,
+	
+	grey-black-tint-1: #252525,
+	dark-grey: #444444,
+	grey: #6f6f6f,
+	grey-tint-1: #8c8c8c,
+	grey-tint-2: #b3b3b3,
+	light-grey-tint-1: #fafafa,
+	light-grey-tint-2: #f2f3f3,
+	light-grey-tint-3: #dbdbdb,
+
+	dark-tundra-tint-1: #6594a9,
+	dark-tundra: #466c86,
+	tundra: #87afbf,
+	tundra-tint-1: #c3d7df,
+	tundra-tint-2: #e1ebef,
+	tundra-tint-3: #f3f7f8,
+
+	dark-carbon-tint-1: #697781,
+	dark-carbon: #50575f,
+	carbon: #889299,
+	carbon-tint-1: #c4c8cc,
+	carbon-tint-2: #e9eaec,
+	carbon-tint-3: #f6f6f7,
+
+	warm-grey: #c1b5a5,
+	beige: #b8a970,
+
+	dark-seaweed: #416866,
+	seaweed: #588886,
+	seaweed-tint-1: #abc3c2,
+	seaweed-tint-3: #f2f6f6,
+	seaweed-tint-2: #e3ebeb,
+	
 	white: #ffffff,
-
-	// Gray variations
-	gray1: #f3f3f3,
-	gray2: #ededed,
-	gray3: #d0d0d2,
-	gray4: #949498,
-	gray5: #67676d,
-	gray6: #38383f,
-
-	// Overlays
-	blackOverlay: #656565
 );
 
 @function getColor($color) {
