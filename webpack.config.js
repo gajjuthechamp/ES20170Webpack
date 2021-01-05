@@ -7,12 +7,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const WebpackModuleNomodulePlugin = require('webpack-module-nomodule-plugin');
 
 const webpackConfig = {
 	entry: {
-		main: path.resolve(__dirname, './src/js/global.js'),
+		main: glob.sync(path.resolve(__dirname, './src/{js/common,views}/**/*.js')),
 		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js')),
-        main: ['./src/scss/main.scss']  
+        style: ['./src/scss/main.scss']  
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -23,6 +24,28 @@ const webpackConfig = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.(js)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						"presets": [
+						  [
+							"@babel/preset-env",
+							{
+								"targets":{
+									"esmodules": true
+								 },
+								"corejs": "3.8.2",
+								"bugfixes": true,
+								"useBuiltIns": "usage"
+							}
+						  ]
+						]
+					  }
+				  }
+			},
 		  {
 			test: /\.html$/i,
 			loader: 'html-loader'
@@ -41,7 +64,7 @@ const webpackConfig = {
 				path.join(__dirname, 'src'),
 				path.join(__dirname, 'src', 'views'),
 				path.join(__dirname, 'src', 'views', 'layouts'),
-				path.join(__dirname, 'src', 'views', 'templates'),
+				path.join(__dirname, 'src', 'views', 'pages'),
 				path.join(__dirname, 'src', 'views', 'partials')
 			  ].concat(
 				glob.sync('**/', {
@@ -77,25 +100,28 @@ const webpackConfig = {
 			patterns: [
 				{ from: './src/static', to: 'static' }
 			]}
-		)
+		),
+		new WebpackModuleNomodulePlugin('legacy'),
+		new WebpackModuleNomodulePlugin('modern')
+
 	],
 	devServer: {
 		contentBase: path.join(__dirname, 'dist')
 	}
 };
 
-fs.readdirSync(path.join(__dirname, 'src', 'views', 'templates')).forEach(page => {
+fs.readdirSync(path.join(__dirname, 'src', 'views', 'pages')).forEach(page => {
     console.log(`Building page: ${page.toUpperCase()}`);
 
     const htmlPageInit = new HtmlWebPackPlugin({
-      title: `Dummy Title`,
-      template: `./src/views/templates/${page}/${page}.hbs`,
+      title: `${page.toUpperCase()} | ES20170Webpack`,
+      template: `./src/views/pages/${page}/${page}.hbs`,
       filename: `./${page != "home" ? page + "/" : ""}index.html`,
-      chunks: ['vendors', 'main', page],
+      chunks: ['vendors', 'main'],
       minify: HTMLConfig.htmlMinifyOptions
     });
 
-    webpackConfig.entry[page] = `./src/views/templates/${page}/${page}.js`;
+    //webpackConfig.entry[page] = `./src/views/pages/${page}/${page}.js`;   
     webpackConfig.plugins.push(htmlPageInit);
 
 });

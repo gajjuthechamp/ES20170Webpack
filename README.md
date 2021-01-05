@@ -39,7 +39,7 @@ git clone https://github.com/gajjuthechamp/ES20170Webpack.git
   
 ## Usage
 ### Description
-It injects every page template (found in `src/views/templates`) in the desired layout, `main.hbs` by default (found in `src/views/layouts`). You can add as many layouts and templates as you want.
+It injects every page template (found in `src/views/pages`) in the desired layout, `main.hbs` by default (found in `src/views/layouts`). You can add as many layouts and templates as you want.
 
 If you want, you can separate **`reusable parts of your code in their own component file`** by simply creating the respective `.hbs file` in `src/views/partials` and then call them in any of your handlebars templates.
 
@@ -47,13 +47,13 @@ If you want, you can separate **`reusable parts of your code in their own compon
 
 ### Guide
 #### 1. Add a page (template)
-Every page you want to add needs a folder in `src/views/templates`, and respective `.js`, `.hbs` and `.scss` files inside of it with same name. You can create them by and or simply typing:
+Every page you want to add needs a folder in `src/views/pages`, and respective `.js`, `.hbs` and `.scss` files inside of it with same name. You can create them by and or simply typing:
 
 ```bash
 npm run create name-of-the-page
 ```
 
-This will create the directory `src/views/templates/name-of-the-page` with 3 files inside of it:
+This will create the directory `src/views/pages/name-of-the-page` with 3 files inside of it:
 
 - **`name-of-the.page.scss`**: a blank and ready to go scss stylesheet for current page.
 
