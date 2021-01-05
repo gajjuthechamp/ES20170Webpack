@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const WebpackModuleNomodulePlugin = require('webpack-module-nomodule-plugin');
+
 
 const webpackConfig = {
 	entry: {
@@ -100,15 +100,14 @@ const webpackConfig = {
 			patterns: [
 				{ from: './src/static', to: 'static' }
 			]}
-		),
-		new WebpackModuleNomodulePlugin('legacy'),
-		new WebpackModuleNomodulePlugin('modern')
-
+		)
 	],
 	devServer: {
 		contentBase: path.join(__dirname, 'dist')
 	}
 };
+
+
 
 fs.readdirSync(path.join(__dirname, 'src', 'views', 'pages')).forEach(page => {
     console.log(`Building page: ${page.toUpperCase()}`);
@@ -127,4 +126,4 @@ fs.readdirSync(path.join(__dirname, 'src', 'views', 'pages')).forEach(page => {
 });
 
 
-module.exports = webpackConfig;
+module.exports =  webpackConfig;
