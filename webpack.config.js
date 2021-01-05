@@ -13,7 +13,7 @@ const webpackConfig = {
 	entry: {
 		main: glob.sync(path.resolve(__dirname, './src/{js/common,views}/**/*.js')),
 		vendors: glob.sync(path.resolve(__dirname, './src/js/vendors/**/*.js')),
-        style: ['./src/scss/main.scss']  
+        style: glob.sync(path.resolve(__dirname, './src/{scss/main.scss,views/**/*.scss}')),
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
